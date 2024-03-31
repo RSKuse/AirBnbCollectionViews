@@ -12,15 +12,17 @@ import UIKit
 
 class HousesPostCollectionCell: UICollectionViewCell {
     
-    var name = ""
+//    var name = ""
     
     lazy var houseImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "lord_KO")
+        imageView.image = UIImage(named: "ben-eaton-VYFGc4Ggut8-unsplash")
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 20
+        imageView.layer.borderWidth = 5.0
+        imageView.layer.borderColor = UIColor.white.cgColor
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.backgroundColor = .red
         return imageView
     }()
     
@@ -57,7 +59,7 @@ class HousesPostCollectionCell: UICollectionViewCell {
     lazy var labelStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [locationNameLabel, detailsOfLocationLabel, numberOfLocationsSavedLabel])
         stackView.distribution = .fillProportionally
-        stackView.spacing = 1.0
+        stackView.spacing = 2.0
         stackView.alignment = .leading
         stackView.axis = .vertical
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -66,10 +68,10 @@ class HousesPostCollectionCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .white
-        layer.cornerRadius = 20
-        layer.borderWidth = 1.0
-        layer.borderColor = UIColor.lightGray.cgColor // For boarder colour you need to add a .cgColor at the end of your colour.
+
+ 
+//        layer.borderWidth = 1.0
+//        layer.borderColor = UIColor.lightGray.cgColor // For boarder colour you need to add a .cgColor at the end of your colour.
         setupView()
     }
  
@@ -81,14 +83,16 @@ class HousesPostCollectionCell: UICollectionViewCell {
         addSubview(labelStackView)
 
         houseImageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        houseImageView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        houseImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -45).isActive = true
         houseImageView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
         houseImageView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         
-        labelStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16).isActive = true
-        labelStackView.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
-        labelStackView.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        labelStackView.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        labelStackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        labelStackView.leftAnchor.constraint(equalTo: leftAnchor, constant: 5).isActive = true
+        labelStackView.topAnchor.constraint(equalTo:houseImageView.bottomAnchor, constant: -2).isActive = true
+        //labelStackView.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
